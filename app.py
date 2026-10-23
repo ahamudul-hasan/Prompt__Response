@@ -5,15 +5,13 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Load environment variables:
-# 1. Try local .env (for local development)
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
 
-# 2. Try Streamlit Cloud Secrets (for cloud deployment)
+# Streamlit Cloud Secrets (for cloud deployment)
 try:
     if "GOOGLE_API_KEY" in st.secrets:
         os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
@@ -29,7 +27,6 @@ st.set_page_config(
     layout="centered"
 )
 
-# Custom styling for a polished chat interface
 st.markdown("""
 <style>
     /* Clean header styling */
@@ -54,7 +51,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Sidebar with settings and reset button
 with st.sidebar:
     st.title("✨ Gemini Chat")
     st.markdown("A ChatGPT / Gemini style conversational app with multi-turn memory.")
