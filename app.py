@@ -53,7 +53,7 @@ st.markdown("""
 
 with st.sidebar:
     st.title("✨ Gemini Chat")
-    st.markdown("A ChatGPT / Gemini style conversational app with multi-turn memory.")
+    st.markdown("A Gemini conversational app with multi-turn memory.")
     
     st.divider()
     
