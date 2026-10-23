@@ -1,14 +1,19 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
-
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Load environment variables (Local .env & Streamlit Cloud Secrets)
-load_dotenv()
+# Load environment variables:
+# 1. Try local .env (for local development)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
+# 2. Try Streamlit Cloud Secrets (for cloud deployment)
 try:
     if "GOOGLE_API_KEY" in st.secrets:
         os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
